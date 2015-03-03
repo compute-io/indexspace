@@ -62,7 +62,7 @@ arr = indexspace( '[:end]', 5 );
 // returns [ 0, 1, 2, 3, 4 ]
 ```
 
-Basic arithmetic (subtraction and division) may be performed on the `end` keyword. The result from division is rounded up to the next integer.
+Basic arithmetic (subtraction and division) may be performed on the `end` keyword. The result from division is __rounded up__ to the next integer.
 
 ``` javascript
 var arr = indexspace( '[end-2::-1]', 5 );
