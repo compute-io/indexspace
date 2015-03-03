@@ -42,7 +42,7 @@ Notes about the notation:
 * 	Both `start` and `stop` can be negative, in which case they specify the number of indices from the __maximum__ `array` index.
 
 ``` javascript
-var arr = indexspace( '[:-3]', 5 );
+var arr = indexspace( '[:-2]', 5 );
 // returns [ 0, 1 ]
 ```
 
@@ -104,6 +104,9 @@ arr = indexspace( '[2::2]', 5 );
 arr =  indexspace( '[:10:3]', 20 );
 // returns [ 0, 3, 6, 9 ]
 
+arr = indexspace( '[:-2]', 5 );
+// returns [ 0, 1 ]
+
 arr = indexspace( '[:-1:2]', 5 );
 // returns [ 0, 2 ]
 
@@ -111,7 +114,7 @@ arr = indexspace( '[-4:-1:2]', 5 );
 // returns [ 0, 2 ]
 
 arr = indexspace( '[-5:-1]', 5 );
-// returns [ 0, 1, 2, 3 ]
+// returns [ 0, 1, 2 ]
 
 arr = indexspace( '[::-1]', 5 );
 // returns [ 4, 3, 2, 1, 0 ]
