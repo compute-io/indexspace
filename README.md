@@ -42,7 +42,7 @@ Notes about the notation:
 * 	If an `increment` is not specified, the default increment is `1`. An `increment` of zero is __not__ allowed.
 *	The `start` index is __inclusive__, while the `stop` index is __exclusive__.
 * 	Both `start` and `stop` indices are *optional*. If not provided, `start` and `stop` default to index extremes.
-* 	Both `start` and `stop` can be negative, in which case they specify the number of indices from the __maximum__ `array` index.
+* 	Both `start` and `stop` can be negative, in which case they refer to an index `len-(start|stop)`.
 
 ``` javascript
 var arr = indexspace( '[:-2]', 5 );
