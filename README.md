@@ -36,21 +36,24 @@ var str = '[<start>:<stop>:<increment>]';
 ```
 
 Notes about the notation:
-* 	If an `increment` is not specified, the default increment is `1`.
+* 	If an `increment` is not specified, the default increment is `1`. An `increment` cannot be set to zero.
 *	The `start` index is __inclusive__, while the `stop` index is __exclusive__.
 * 	Both `start` and `stop` indices are *optional*. If not provided, `start` and `stop` default to index extremes.
-* 	Both `start` and `stop` can be negative, in which case they specify the number of indices from the *end* of an `array`.
+* 	Both `start` and `stop` can be negative, in which case they specify the number of indices from the __end__ of an `array`.
 
 ``` javascript
 var arr = indexspace( '[:-3]', 5 );
 // returns [ 0, 1 ]
 ```
 
-The function also recognizes the `end` keyword, which refers to the last index; i.e., `len-1`.
+The function also recognizes the `end` keyword, which refers to the last index; i.e., `len-1`. If specified as the `stop` index, `end` is inclusive.
 
 ``` javascript
 var arr = indexspace( '[end::-1]', 5 );
 // returns [ 4, 3, 2, 1, 0 ]
+
+arr = indexspace( '[:end]', 5 );
+// returns [ 0, 1, 2, 3, 4 ]
 ```
 
 Basic arithmetic (subtraction and division) may be performed on the `end` keyword. The result from division is rounded up to the next integer.
