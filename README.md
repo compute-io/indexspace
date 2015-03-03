@@ -137,10 +137,12 @@ The motivation for this module stems from wanting to create an API for `arrays` 
 The workaround provided by this module is to express the subsequence syntax as a `string`, which, when provided with an `array` length, is then parsed into an index `array`. A consumer can then iterate through the index `array` to extract the desired elements.
 
 ``` javascript
-// Create an array...
-var arr, len;
+var indexspace = require( 'compute-indexspace' );
 
-len = 10;
+// Create an array...
+var len = 10,
+	arr;
+
 arr = new Array( len );
 for ( var i = 0; i < len; i++ ) {
 	arr[ i ] = i;
