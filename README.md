@@ -22,7 +22,7 @@ var indexspace = require( 'compute-indexspace' );
 
 #### indexspace( str, len )
 
-Generates a linearly spaced index `array` from a subsequence `string`. `len` specifies the reference `array` length, which is needed to properly interpret the subsequence `string`.
+Generates a linearly spaced index `array` from a subsequence `string`. `len` specifies the reference `array` length, which is needed to properly interpret the subsequence `string`. If `len = 0`, the function returns an empty `array`.
 
 ``` javascript
 var arr = indexspace( '[:]', 5 );
