@@ -72,6 +72,11 @@ console.log( '\n[-1:-4:-2]' );
 console.log( arr );
 // returns [ 3, 1 ]
 
+arr = indexspace( '[:end]', 5 );
+console.log( '\n[:end]' );
+console.log( arr );
+// returns [ 0, 1, 2, 3, 4 ]
+
 arr = indexspace( '[:end-1]', 5 );
 console.log( '\n[:end-1]' );
 console.log( arr );
@@ -91,3 +96,27 @@ arr = indexspace( '[end/2:]', 5 );
 console.log( '\n[end/2:]' );
 console.log( arr );
 // returns [ 2, 3, 4 ]
+
+
+// Reversing an array...
+console.log( '\nReverse an array...\n' );
+
+// Create an array...
+var len = 10;
+
+arr = new Array( len );
+for ( var i = 0; i < len; i++ ) {
+	arr[ i ] = i;
+}
+
+// Create an index array...
+var idx = indexspace( '[::-1]', len );
+
+// From the original array, create a reversed array...
+var rev = new Array( len );
+for ( var j = 0; j < len; j++ ) {
+	rev[ j ] = arr[ idx[j] ];
+}
+console.log( arr.join( ',' ) );
+console.log( rev.join( ',' ) );
+console.log( '\n' );

@@ -122,6 +122,9 @@ arr = indexspace( '[3:0:-1]', 5 );
 arr = indexspace( '[-1:-4:-2]', 5 );
 // returns [ 3, 1 ]
 
+arr = indexspace( '[:end]', 5 );
+// returns [ 0, 1, 2, 3, 4 ]
+
 arr = indexspace( '[:end-1]', 5 );
 // returns [ 0, 1, 2, 3 ]
 
