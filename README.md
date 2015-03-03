@@ -22,22 +22,24 @@ var indexspace = require( 'compute-indexspace' );
 
 #### indexspace( str, len )
 
-Generates a linearly spaced index `array` from a subsequence `string`. The subsequence `string` syntax is similar to Python's [slice](https://docs.python.org/2/tutorial/introduction.html) notation.
-
-``` javascript
-var str = '[<start>:<stop>:<increment>]';
-```
-
-If an `increment` is not specified, the default increment is `1`. The `start` index is inclusive, while the `stop` index is exclusive. Both `start` and `stop` indices are *optional*. If not provided, `start` and `stop` default to index extremes.
-
-The `len` parameter specifies the `array` length, which is needed to properly interpret the subsequence `string`.
+Generates a linearly spaced index `array` from a subsequence `string`. `len` specifies the reference `array` length, which is needed to properly interpret the subsequence `string`.
 
 ``` javascript
 var arr = indexspace( '[:]', 5 );
 // returns [ 0, 1, 2, 3, 4 ]
 ```
 
-Both `start` and `stop` can be negative, in which case they specify the number of indices from the *end* of an `array`.
+The subsequence `string` syntax is similar to Python's [slice](https://docs.python.org/2/tutorial/introduction.html) notation.
+
+``` javascript
+var str = '[<start>:<stop>:<increment>]';
+```
+
+Notes about the notation:
+* 	If an `increment` is not specified, the default increment is `1`.
+*	The `start` index is inclusive, while the `stop` index is exclusive.
+* 	Both `start` and `stop` indices are *optional*. If not provided, `start` and `stop` default to index extremes.
+* 	Both `start` and `stop` can be negative, in which case they specify the number of indices from the *end* of an `array`.
 
 ``` javascript
 var arr = indexspace( '[:-3]', 5 );
