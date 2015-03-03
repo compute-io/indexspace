@@ -52,7 +52,7 @@ arr = indexspace( '[:-2]', 5 );
 // returns [ 0, 1, 2 ]
 ```
 
-The function also recognizes the `end` keyword, which refers to the last index; i.e., `len-1`. If specified as the `stop` index, `end` is __inclusive__.
+The function also recognizes the `end` keyword, which refers to the last index; i.e., `len-1`. If specified as the `stop` index, `end` is __inclusive__ and equivalent to `[<start>::<increment>]`.
 
 ``` javascript
 var arr = indexspace( '[end::-1]', 5 );
