@@ -191,10 +191,13 @@ describe( 'compute-indexspace', function tests() {
 	it( 'should return an empty array if start and end indices are equal', function test() {
 		var actual;
 
-		actual = indexspace( '[2:]', 3 );
+		actual = indexspace( '[2:end-2]', 5 );
 		assert.deepEqual( actual, [] );
 
-		actual = indexspace( '[:2:-1]', 3 );
+		actual = indexspace( '[2:-2]', 5 );
+		assert.deepEqual( actual, [] );
+
+		actual = indexspace( '[2:2]', 5 );
 		assert.deepEqual( actual, [] );
 	});
 
