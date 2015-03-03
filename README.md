@@ -81,7 +81,7 @@ This implementation chooses to follow the Python convention such that `[:n]` com
 var indexspace = require( 'compute-indexspace' );
 
 var arr = indexspace( '[:]', 5 );
-// returns [ 1, 2, 3, 4 ]; 
+// returns [ 0, 1, 2, 3, 4 ] 
 
 arr = indexspace( '[2:]', 5 );
 // returns [ 2, 3, 4 ]
