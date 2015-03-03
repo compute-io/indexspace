@@ -112,26 +112,34 @@ describe( 'compute-indexspace', function tests() {
 
 		actual = indexspace( '[2::2]', 5 );
 		expected = [ 2, 4 ];
-		assert.deepEqual( actual, expected );
+		assert.deepEqual( actual, expected, '[2::2]' );
 
 		actual =  indexspace( '[:10:3]', 20 );
 		expected = [ 0, 3, 6, 9 ];
-		assert.deepEqual( actual, expected, '[2::2]' );
+		assert.deepEqual( actual, expected, '[:10:3]' );
 
 		actual = indexspace( '[:-1]', 5 );
 		expected = [ 0, 1, 2, 3 ];
 		assert.deepEqual( actual, expected, '[:-1]' );
 
+		actual = indexspace( '[-3:]', 5 );
+		expected = [ 2, 3, 4 ];
+		assert.deepEqual( actual, expected, '[-3:]' );
+
 		actual = indexspace( '[:-2]', 5 );
 		expected = [ 0, 1, 2 ];
 		assert.deepEqual( actual, expected, '[:-2]' );
+
+		actual = indexspace( '[2:-2]', 5 );
+		expected = [ 2 ];
+		assert.deepEqual( actual, expected, '[2:-2]' );
 
 		actual = indexspace( '[:-1:2]', 5 );
 		expected = [ 0, 2 ];
 		assert.deepEqual( actual, expected, '[:-1:2]' );
 
 		actual = indexspace( '[-4:-1:2]', 5 );
-		expected = [ 0, 2 ];
+		expected = [ 1, 3 ];
 		assert.deepEqual( actual, expected, '[-4:-1:2]' );
 
 		actual = indexspace( '[-5:-1]', 5 );
@@ -151,7 +159,7 @@ describe( 'compute-indexspace', function tests() {
 		assert.deepEqual( actual, expected, '[3:0:-1]' );
 
 		actual = indexspace( '[-1:-4:-2]', 5 );
-		expected = [ 3, 1 ];
+		expected = [ 4, 2 ];
 		assert.deepEqual( actual, expected, '[-1:-4:-2]' );
 	});
 
@@ -189,6 +197,18 @@ describe( 'compute-indexspace', function tests() {
 		actual = indexspace( '[end/2:]', 6 );
 		expected = [ 3, 4, 5 ];
 		assert.deepEqual( actual, expected, '[end/2:]' );
+
+		actual = indexspace( '[2:end-2]', 5 );
+		expected = [ 2 ];
+		assert.deepEqual( actual, expected, '[2:end-2]' );
+
+		actual = indexspace( '[end/3::-1]', 5 );
+		expected = [ 2, 1, 0 ];
+		assert.deepEqual( actual, expected, '[end/3::-1]' );
+
+		actual = indexspace( '[1:end:2]', 5 );
+		expected = [ 1, 3 ];
+		assert.deepEqual( actual, expected, '[1:end:2]' );
 	});
 
 	it( 'should return an empty array if provided a reference array length equal to 0', function test() {
@@ -199,11 +219,8 @@ describe( 'compute-indexspace', function tests() {
 	it( 'should return an empty array if start and end indices are equal', function test() {
 		var actual;
 
-		actual = indexspace( '[2:end-2]', 5 );
-		assert.deepEqual( actual, [], '[2:end-2]' );
-
-		actual = indexspace( '[2:-2]', 5 );
-		assert.deepEqual( actual, [], '[2:-2]' );
+		actual = indexspace( '[2:-3]', 5 );
+		assert.deepEqual( actual, [], '[2:-3]' );
 
 		actual = indexspace( '[2:2]', 5 );
 		assert.deepEqual( actual, [], '[2:2]' );

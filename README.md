@@ -42,10 +42,13 @@ Notes about the notation:
 * 	If an `increment` is not specified, the default increment is `1`. An `increment` of zero is __not__ allowed.
 *	The `start` index is __inclusive__, while the `stop` index is __exclusive__.
 * 	Both `start` and `stop` indices are *optional*. If not provided, `start` and `stop` default to index extremes.
-* 	Both `start` and `stop` can be negative, in which case they refer to an index `len-(start|stop)`.
+* 	Both `start` and `stop` can be negative. `start < 0` specifies a start index `start` indices from the end of the reference `array`; e.g., if `len = 5`, `start = -3 = 1.` `stop < 0` specifies the number of elements to exclude from the end of the reference `array`; e.g., if `len = 5`, `stop = -2 = 3`.
 
 ``` javascript
-var arr = indexspace( '[:-2]', 5 );
+var arr = indexspace( '[-3:]', 5 );
+// returns [ 2, 3, 4 ];
+
+arr = indexspace( '[:-2]', 5 );
 // returns [ 0, 1, 2 ]
 ```
 
@@ -66,7 +69,7 @@ var arr = indexspace( '[end-2::-1]', 5 );
 // returns [ 2, 1, 0 ];
 
 arr = indexspace( '[end/3::-1]', 5 );
-// returns [ 1, 0 ];
+// returns [ 2, 1, 0 ];
 
 arr = indexspace( '[1:end:2]', 5 );
 // returns [ 1, 3 ];
@@ -114,7 +117,7 @@ arr = indexspace( '[:-1:2]', 5 );
 // returns [ 0, 2 ]
 
 arr = indexspace( '[-4:-1:2]', 5 );
-// returns [ 0, 2 ]
+// returns [ 1, 3 ]
 
 arr = indexspace( '[-5:-1]', 5 );
 // returns [ 0, 1, 2, 3 ]
@@ -129,7 +132,7 @@ arr = indexspace( '[3:0:-1]', 5 );
 // returns [ 3, 2, 1 ]
 
 arr = indexspace( '[-1:-4:-2]', 5 );
-// returns [ 3, 1 ]
+// returns [ 4, 2 ]
 
 arr = indexspace( '[:end]', 5 );
 // returns [ 0, 1, 2, 3, 4 ]
