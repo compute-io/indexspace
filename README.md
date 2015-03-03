@@ -17,18 +17,108 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 ## Usage
 
 ``` javascript
-var foo = require( 'compute-indexspace' );
+var indexspace = require( 'compute-indexspace' );
 ```
 
-#### foo( arr )
+#### indexspace( str, len )
 
-What does this function do?
+Generates a linearly spaced index `array` from a subsequence `string`. The subsequence `string` syntax is similar to Python's [slice](https://docs.python.org/2/tutorial/introduction.html) notation.
+
+``` javascript
+var str = '[<start>:<stop>:<increment>]';
+```
+
+If an `increment` is not specified, the default increment is `1`. The `start` index is inclusive, while the `stop` index is exclusive. Both `start` and `stop` indices are *optional*. If not provided, `start` and `stop` default to index extremes.
+
+The `len` parameter specifies the `array` length, which is needed to properly interpret the subsequence `string`.
+
+``` javascript
+var arr = indexspace( '[:]', 5 );
+// returns [ 0, 1, 2, 3, 4 ]
+```
+
+Both `start` and `stop` can be negative, in which case they specify the number of indices from the *end* of an `array`.
+
+``` javascript
+var arr = indexspace( '[:-3]', 5 );
+// returns [ 0, 1 ]
+```
+
+The function also recognizes the `end` keyword, which refers to the last index; i.e., `len-1`.
+
+``` javascript
+var arr = indexspace( '[end::-1]', 5 );
+// returns [ 4, 3, 2, 1, 0 ]
+```
+
+Basic arithmetic (subtraction and division) may be performed on the `end` keyword. The result from division is rounded up to the next integer.
+
+``` javascript
+var arr = indexspace( '[end-2::-1]', 5 );
+// returns [ 2, 1, 0 ];
+
+arr = indexspace( '[end/3::-1]', 5 );
+// returns [ 1, 0 ];
+
+arr = indexspace( '[1:end:2]', 5 );
+// returns [ 1, 3 ];
+```
+
+
+
+__Note__: unlike Matlab, but like Python, the subsequence `string` is upper-bound exclusive. For example, in Python, `[0:2]` corresponds to the index array `[0,1]`. In Matlab, `[1:3]` corresponds to `[1,2,3]`.
+
+This implementation chooses to follow the Python convention such that `[:n]` combined with `[n:]` is equivalent to `[:]`. Using the Matlab syntax, the two subsequences would overlap by one element.
+
+
 
 
 ## Examples
 
 ``` javascript
-var foo = require( 'compute-indexspace' );
+var indexspace = require( 'compute-indexspace' );
+
+var arr = indexspace( '[:]', 5 );
+// returns [ 1, 2, 3, 4 ]; 
+
+arr = indexspace( '[2:]', 5 );
+// returns [ 2, 3, 4 ]
+
+arr = indexspace( '[:3]', 5 );
+// returns [ 0, 1, 2 ]
+
+arr = indexspace( '[2:4]', 5 );
+// returns [ 2, 3 ]
+
+arr = indexspace( '[1:4:2]', 5 );
+// returns [ 1, 3 ]
+
+arr = indexspace( '[2::2]', 5 );
+// returns [ 2, 4 ]
+
+arr =  indexspace( '[:10:3]', 20 );
+// returns [ 0, 3, 6, 9 ]
+
+arr = indexspace( '[:-1:2]', 5 );
+// returns [ 0, 2 ]
+
+arr = indexspace( '[-4:-1:2]', 5 );
+// returns [ 1, 3 ]
+
+arr = indexspace( '[-5:-1]', 5 );
+// returns [ 0, 1, 2, 3 ]
+
+arr = indexspace( '[::-1]', 5 );
+// returns [ 4, 3, 2, 1, 0 ]
+
+arr = indexspace( '[:0:-1]', 5 );
+// returns [ 4, 3, 2, 1 ]
+
+arr = indexspace( '[3:0:-1]', 5 );
+// returns [ 3, 2, 1 ]
+
+arr = indexspace( '[-1:-4:-2]', 5 );
+// returns [ 3, 1 ]
 ```
 
 To run the example code from the top-level application directory,
@@ -36,6 +126,37 @@ To run the example code from the top-level application directory,
 ``` bash
 $ node ./examples/index.js
 ```
+
+
+## Notes
+
+The motivation for this module stems from wanting to create an API for `arrays` similar to Python and Matlab; e.g., `A = B[1:6:2];`. JavaScript only supports basic indexing; e.g., `A = B[3][2];`.
+
+The workaround provided by this module is to express the subsequence syntax as a `string`, which, when provided with an `array` length`, is then parsed into an index `array`. A consumer can then iterate through the index `array` to extract the desired elements.
+
+``` javascript
+// Create an array...
+var arr, len;
+
+len = 10;
+arr = new Array( len );
+for ( var i = 0; i < len; i++ ) {
+	arr[ i ] = i;
+}
+
+// Create an index array...
+var idx = indexspace( '[::-1]', len );
+
+// From the original array, create a reversed array...
+var rev = new Array( len );
+for ( var j = 0; j < len; j++ ) {
+	rev[ j ] = arr[ idx[j] ];
+}
+console.log( arr.join( ',' ) );
+console.log( rev.join( ',' ) );
+```
+
+
 
 
 ## Tests

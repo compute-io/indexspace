@@ -7,7 +7,7 @@ var // Expectation library:
 	chai = require( 'chai' ),
 
 	// Module to be tested:
-	lib = require( './../lib' );
+	indexspace = require( './../lib' );
 
 
 // VARIABLES //
@@ -21,7 +21,7 @@ var expect = chai.expect,
 describe( 'compute-indexspace', function tests() {
 
 	it( 'should export a function', function test() {
-		expect( lib ).to.be.a( 'function' );
+		expect( indexspace ).to.be.a( 'function' );
 	});
 
 	it( 'should do something' );

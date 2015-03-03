@@ -25,12 +25,24 @@
   "keywords": [
     "compute.io",
     "compute",
-    "computation"
+    "computation",
+    "mathematics",
+    "math",
+    "array",
+    "index",
+    "slice",
+    "subsequence",
+    "indexarray",
+    "linear",
+    "utils",
+    "utilities"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/indexspace/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "validate.io-nonnegative-integer": "^1.0.0"
+  },
   "devDependencies": {
     "chai": "2.x.x",
     "mocha": "2.x.x",
