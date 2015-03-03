@@ -60,12 +60,6 @@ var arr = indexspace( '[end::-1]', 5 );
 
 arr = indexspace( '[:end]', 5 );
 // returns [ 0, 1, 2, 3, 4 ]
-
-arr = indexspace( '[:end/2]', 5 );
-// returns [ 0, 1 ]
-
-arr = indexspace( '[end/2:]', 5 );
-// returns [ 2, 3, 4 ]
 ```
 
 Basic arithmetic (subtraction and division) may be performed on the `end` keyword. The result from division is rounded up to the next integer.
@@ -73,6 +67,12 @@ Basic arithmetic (subtraction and division) may be performed on the `end` keywor
 ``` javascript
 var arr = indexspace( '[end-2::-1]', 5 );
 // returns [ 2, 1, 0 ];
+
+arr = indexspace( '[:end/2]', 5 );
+// returns [ 0, 1 ]
+
+arr = indexspace( '[end/2:]', 5 );
+// returns [ 2, 3, 4 ]
 
 arr = indexspace( '[end/3::-1]', 5 );
 // returns [ 2, 1, 0 ];
