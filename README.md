@@ -70,7 +70,7 @@ arr = indexspace( '[1:end:2]', 5 );
 
 __Note__: unlike Matlab, but like Python, the subsequence `string` is upper-bound __exclusive__. For example, in Python, `[0:2]` corresponds to the index array `[0,1]`. In Matlab, `[1:3]` corresponds to `[1,2,3]`.
 
-This implementation chooses to follow the Python convention such that `[:n]` combined with `[n:]` is equivalent to `[:]`. Using the Matlab syntax, the two subsequences would overlap by one element.
+This implementation chooses to follow the Python convention such that `[:n]` combined with `[n:]` is equivalent to `[:]`. Using the Matlab convention, the two subsequences would overlap by one element.
 
 
 
