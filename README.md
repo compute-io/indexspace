@@ -46,7 +46,7 @@ Notes about the notation:
 
 ``` javascript
 var arr = indexspace( '[:-2]', 5 );
-// returns [ 0, 1 ]
+// returns [ 0, 1, 2 ]
 ```
 
 The function also recognizes the `end` keyword, which refers to the last index; i.e., `len-1`. If specified as the `stop` index, `end` is inclusive.
@@ -108,7 +108,7 @@ arr =  indexspace( '[:10:3]', 20 );
 // returns [ 0, 3, 6, 9 ]
 
 arr = indexspace( '[:-2]', 5 );
-// returns [ 0, 1 ]
+// returns [ 0, 1, 2 ]
 
 arr = indexspace( '[:-1:2]', 5 );
 // returns [ 0, 2 ]
@@ -117,7 +117,7 @@ arr = indexspace( '[-4:-1:2]', 5 );
 // returns [ 0, 2 ]
 
 arr = indexspace( '[-5:-1]', 5 );
-// returns [ 0, 1, 2 ]
+// returns [ 0, 1, 2, 3 ]
 
 arr = indexspace( '[::-1]', 5 );
 // returns [ 4, 3, 2, 1, 0 ]

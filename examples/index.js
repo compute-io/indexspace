@@ -40,7 +40,7 @@ console.log( arr );
 arr = indexspace( '[:-2]', 5 );
 console.log( '\n[:-2]' );
 console.log( arr );
-// returns [ 0, 1 ]
+// returns [ 0, 1, 2 ]
 
 arr = indexspace( '[:-1:2]', 5 );
 console.log( '\n[:-1:2]' );
@@ -55,7 +55,7 @@ console.log( arr );
 arr = indexspace( '[-5:-1]', 5 );
 console.log( '\n[-5:-1]' );
 console.log( arr );
-// returns [ 0, 1, 2 ]
+// returns [ 0, 1, 2, 3 ]
 
 arr = indexspace( '[::-1]', 5 );
 console.log( '\n[::-1]' );

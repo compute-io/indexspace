@@ -119,11 +119,11 @@ describe( 'compute-indexspace', function tests() {
 		assert.deepEqual( actual, expected, '[2::2]' );
 
 		actual = indexspace( '[:-1]', 5 );
-		expected = [ 0, 1, 2 ];
+		expected = [ 0, 1, 2, 3 ];
 		assert.deepEqual( actual, expected, '[:-1]' );
 
 		actual = indexspace( '[:-2]', 5 );
-		expected = [ 0, 1 ];
+		expected = [ 0, 1, 2 ];
 		assert.deepEqual( actual, expected, '[:-2]' );
 
 		actual = indexspace( '[:-1:2]', 5 );
@@ -135,7 +135,7 @@ describe( 'compute-indexspace', function tests() {
 		assert.deepEqual( actual, expected, '[-4:-1:2]' );
 
 		actual = indexspace( '[-5:-1]', 5 );
-		expected = [ 0, 1, 2 ];
+		expected = [ 0, 1, 2, 3 ];
 		assert.deepEqual( actual, expected, '[-5:-1]' );
 
 		actual = indexspace( '[::-1]', 5 );
