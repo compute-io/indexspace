@@ -105,7 +105,7 @@ arr = indexspace( '[:-1:2]', 5 );
 // returns [ 0, 2 ]
 
 arr = indexspace( '[-4:-1:2]', 5 );
-// returns [ 1, 3 ]
+// returns [ 0, 2 ]
 
 arr = indexspace( '[-5:-1]', 5 );
 // returns [ 0, 1, 2, 3 ]
@@ -121,6 +121,18 @@ arr = indexspace( '[3:0:-1]', 5 );
 
 arr = indexspace( '[-1:-4:-2]', 5 );
 // returns [ 3, 1 ]
+
+arr = indexspace( '[:end-1]', 5 );
+// returns [ 0, 1, 2, 3 ]
+
+arr = indexspace( '[:end/2]', 5 );
+// returns [ 0, 1 ]
+
+arr = indexspace( '[end-2::-1]', 5 );
+// returns [ 2, 1, 0 ]
+
+arr = indexspace( '[end/2:]', 5 );
+// returns [ 2, 3, 4 ]
 ```
 
 To run the example code from the top-level application directory,

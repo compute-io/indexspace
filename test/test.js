@@ -80,8 +80,34 @@ describe( 'compute-indexspace', function tests() {
 		}
 	});
 
+	it( 'should throw an error if provided a 0 increment', function test() {
+		expect( badValue ).to.throw( Error );
+		function badValue() {
+			indexspace( '[::0]', 10 );
+		}
+	});
+
+	it( 'should return an index array', function test() {
+
+	});
+
 	it( 'should return an empty array if provided a reference array length equal to 0', function test() {
 		var actual = indexspace( '[:]', 0 );
+		assert.deepEqual( actual, [] );
+	});
+
+	it( 'should return an empty array if start and end indices are equal', function test() {
+		var actual = indexspace( '[2:2]', 10 );
+		assert.deepEqual( actual, [] );
+	});
+
+	it( 'should return an empty array if start is greater than the end for a positive increment', function test() {
+		var actual = indexspace( '[4:0]', 10 );
+		assert.deepEqual( actual, [] );
+	});
+
+	it( 'should return an empty array if start is less than the end for a negative increment', function test() {
+		var actual = indexspace( '[0:4:-1]', 10 );
 		assert.deepEqual( actual, [] );
 	});
 
