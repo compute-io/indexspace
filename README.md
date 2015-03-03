@@ -134,7 +134,7 @@ $ node ./examples/index.js
 
 The motivation for this module stems from wanting to create an API for `arrays` similar to Python and Matlab; e.g., `A = B[1:6:2];`. JavaScript only supports basic indexing; e.g., `A = B[3][2];`.
 
-The workaround provided by this module is to express the subsequence syntax as a `string`, which, when provided with an `array` length, is then parsed into an index `array`. A consumer can then iterate through the index `array` to extract the desired elements.
+The workaround provided by this module is to express the subsequence syntax as a `string`, which, when provided with a reference `array` length, is parsed and then converted into an index `array`. A consumer can then iterate through the index `array` to extract the desired elements.
 
 ``` javascript
 var indexspace = require( 'compute-indexspace' );
