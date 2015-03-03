@@ -37,7 +37,7 @@ var str = '[<start>:<stop>:<increment>]';
 
 Notes about the notation:
 * 	If an `increment` is not specified, the default increment is `1`.
-*	The `start` index is inclusive, while the `stop` index is exclusive.
+*	The `start` index is __inclusive__, while the `stop` index is __exclusive__.
 * 	Both `start` and `stop` indices are *optional*. If not provided, `start` and `stop` default to index extremes.
 * 	Both `start` and `stop` can be negative, in which case they specify the number of indices from the *end* of an `array`.
 
@@ -134,7 +134,7 @@ $ node ./examples/index.js
 
 The motivation for this module stems from wanting to create an API for `arrays` similar to Python and Matlab; e.g., `A = B[1:6:2];`. JavaScript only supports basic indexing; e.g., `A = B[3][2];`.
 
-The workaround provided by this module is to express the subsequence syntax as a `string`, which, when provided with an `array` length`, is then parsed into an index `array`. A consumer can then iterate through the index `array` to extract the desired elements.
+The workaround provided by this module is to express the subsequence syntax as a `string`, which, when provided with an `array` length, is then parsed into an index `array`. A consumer can then iterate through the index `array` to extract the desired elements.
 
 ``` javascript
 // Create an array...
