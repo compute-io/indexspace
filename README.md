@@ -27,6 +27,9 @@ Generates a linearly spaced index `array` from a subsequence `string`. `len` spe
 ``` javascript
 var arr = indexspace( '[:]', 5 );
 // returns [ 0, 1, 2, 3, 4 ]
+
+arr = indexspace( '[:]', 0 );
+// returns []
 ```
 
 The subsequence `string` syntax is similar to Python's [slice](https://docs.python.org/2/tutorial/introduction.html) notation.
