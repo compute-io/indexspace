@@ -1,6 +1,6 @@
 {
   "name": "compute-indexspace",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Generates a linearly spaced index array from a subsequence string.",
   "author": {
     "name": "Athan Reines",
