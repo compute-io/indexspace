@@ -25,17 +25,17 @@ var indexspace = require( 'compute-indexspace' );
 Generates a linearly spaced index `array` from a subsequence `string`. `len` specifies the reference `array` length, which is needed to properly interpret the subsequence `string`. If `len = 0`, the function returns an empty `array`.
 
 ``` javascript
-var arr = indexspace( '[:]', 5 );
+var arr = indexspace( ':', 5 );
 // returns [ 0, 1, 2, 3, 4 ]
 
-arr = indexspace( '[:]', 0 );
+arr = indexspace( ':', 0 );
 // returns []
 ```
 
 The subsequence `string` syntax is similar to Python's [slice](https://docs.python.org/2/tutorial/introduction.html) notation.
 
 ``` javascript
-var str = '[<start>:<stop>:<increment>]';
+var str = '<start>:<stop>:<increment>';
 ```
 
 Notes about the notation:
@@ -45,47 +45,47 @@ Notes about the notation:
 * 	Both `start` and `stop` can be negative, in which case the index is subtracted from `len`.
 
 ``` javascript
-var arr = indexspace( '[-3:]', 5 );
+var arr = indexspace( '-3:', 5 );
 // returns [ 2, 3, 4 ];
 
-arr = indexspace( '[:-2]', 5 );
+arr = indexspace( ':-2', 5 );
 // returns [ 0, 1, 2 ]
 ```
 
-The function also recognizes the `end` keyword, which refers to the last index; i.e., `len-1`. If specified as the `stop` index, `end` is __inclusive__ and equivalent to `[<start>::<increment>]`.
+The function also recognizes the `end` keyword, which refers to the last index; i.e., `len-1`. If specified as the `stop` index, `end` is __inclusive__ and equivalent to `<start>::<increment>`.
 
 ``` javascript
-var arr = indexspace( '[end::-1]', 5 );
+var arr = indexspace( 'end::-1', 5 );
 // returns [ 4, 3, 2, 1, 0 ]
 
-arr = indexspace( '[:end]', 5 );
+arr = indexspace( ':end', 5 );
 // returns [ 0, 1, 2, 3, 4 ]
 ```
 
 Basic arithmetic (subtraction and division) may be performed on the `end` keyword. The result from division is __rounded up__ to the next integer.
 
 ``` javascript
-var arr = indexspace( '[end-2::-1]', 5 );
+var arr = indexspace( 'end-2::-1', 5 );
 // returns [ 2, 1, 0 ];
 
-arr = indexspace( '[:end/2]', 5 );
+arr = indexspace( ':end/2', 5 );
 // returns [ 0, 1 ]
 
-arr = indexspace( '[end/2:]', 5 );
+arr = indexspace( 'end/2:', 5 );
 // returns [ 2, 3, 4 ]
 
-arr = indexspace( '[end/3::-1]', 5 );
+arr = indexspace( 'end/3::-1', 5 );
 // returns [ 2, 1, 0 ];
 
-arr = indexspace( '[1:end:2]', 5 );
+arr = indexspace( '1:end:2', 5 );
 // returns [ 1, 3 ];
 ```
 
 
 
-__Note__: unlike Matlab, but like Python, the subsequence `string` is upper-bound __exclusive__. For example, in Python, `[0:2]` corresponds to the index array `[0,1]`. In Matlab, `[1:3]` corresponds to `[1,2,3]`.
+__Note__: unlike Matlab, but like Python, the subsequence `string` is upper-bound __exclusive__. For example, in Python, `0:2` corresponds to the index array `[0,1]`. In Matlab, `1:3` corresponds to `[1,2,3]`.
 
-This implementation chooses to follow the Python convention such that `[:n]` combined with `[n:]` is equivalent to `[:]`. Using the Matlab convention, the two subsequences would overlap by one element.
+This implementation chooses to follow the Python convention such that `:n` combined with `n:` is equivalent to `:`. Using the Matlab convention, the two subsequences would overlap by one element.
 
 
 
@@ -95,64 +95,64 @@ This implementation chooses to follow the Python convention such that `[:n]` com
 ``` javascript
 var indexspace = require( 'compute-indexspace' );
 
-var arr = indexspace( '[:]', 5 );
+var arr = indexspace( ':', 5 );
 // returns [ 0, 1, 2, 3, 4 ] 
 
-arr = indexspace( '[2:]', 5 );
+arr = indexspace( '2:', 5 );
 // returns [ 2, 3, 4 ]
 
-arr = indexspace( '[:3]', 5 );
+arr = indexspace( ':3', 5 );
 // returns [ 0, 1, 2 ]
 
-arr = indexspace( '[2:4]', 5 );
+arr = indexspace( '2:4', 5 );
 // returns [ 2, 3 ]
 
-arr = indexspace( '[1:4:2]', 5 );
+arr = indexspace( '1:4:2', 5 );
 // returns [ 1, 3 ]
 
-arr = indexspace( '[2::2]', 5 );
+arr = indexspace( '2::2', 5 );
 // returns [ 2, 4 ]
 
-arr =  indexspace( '[:10:3]', 20 );
+arr =  indexspace( ':10:3', 20 );
 // returns [ 0, 3, 6, 9 ]
 
-arr = indexspace( '[:-2]', 5 );
+arr = indexspace( ':-2', 5 );
 // returns [ 0, 1, 2 ]
 
-arr = indexspace( '[:-1:2]', 5 );
+arr = indexspace( ':-1:2', 5 );
 // returns [ 0, 2 ]
 
-arr = indexspace( '[-4:-1:2]', 5 );
+arr = indexspace( '-4:-1:2', 5 );
 // returns [ 1, 3 ]
 
-arr = indexspace( '[-5:-1]', 5 );
+arr = indexspace( '-5:-1', 5 );
 // returns [ 0, 1, 2, 3 ]
 
-arr = indexspace( '[::-1]', 5 );
+arr = indexspace( '::-1', 5 );
 // returns [ 4, 3, 2, 1, 0 ]
 
-arr = indexspace( '[:0:-1]', 5 );
+arr = indexspace( ':0:-1', 5 );
 // returns [ 4, 3, 2, 1 ]
 
-arr = indexspace( '[3:0:-1]', 5 );
+arr = indexspace( '3:0:-1', 5 );
 // returns [ 3, 2, 1 ]
 
-arr = indexspace( '[-1:-4:-2]', 5 );
+arr = indexspace( '-1:-4:-2', 5 );
 // returns [ 4, 2 ]
 
-arr = indexspace( '[:end]', 5 );
+arr = indexspace( ':end', 5 );
 // returns [ 0, 1, 2, 3, 4 ]
 
-arr = indexspace( '[:end-1]', 5 );
+arr = indexspace( ':end-1', 5 );
 // returns [ 0, 1, 2, 3 ]
 
-arr = indexspace( '[:end/2]', 5 );
+arr = indexspace( ':end/2', 5 );
 // returns [ 0, 1 ]
 
-arr = indexspace( '[end-2::-1]', 5 );
+arr = indexspace( 'end-2::-1', 5 );
 // returns [ 2, 1, 0 ]
 
-arr = indexspace( '[end/2:]', 5 );
+arr = indexspace( 'end/2:', 5 );
 // returns [ 2, 3, 4 ]
 ```
 
@@ -165,7 +165,7 @@ $ node ./examples/index.js
 
 ## Notes
 
-The motivation for this module stems from wanting to create an API for `arrays` similar to Python and Matlab; e.g., `A = B[1:6:2];`. JavaScript only supports basic indexing; e.g., `A = B[3][2];`.
+The motivation for this module stems from wanting to create an API for `arrays` similar to Python and Matlab; e.g., `A = B[1:6:2];`. JavaScript only supports basic indexing; e.g., `A = B[3];`.
 
 The workaround provided by this module is to express the subsequence syntax as a `string`, which, when provided with a reference `array` length, is parsed and then converted into an index `array`. A consumer can then iterate through the index `array` to extract the desired elements.
 
@@ -182,7 +182,7 @@ for ( var i = 0; i < len; i++ ) {
 }
 
 // Create an index array...
-var idx = indexspace( '[::-1]', len );
+var idx = indexspace( '::-1', len );
 
 // From the original array, create a reversed array...
 var rev = new Array( len );
